@@ -3,3 +3,5 @@
 [Rr]elease
 .*.sw?
 *~
+/Online/tmp/
+/Online/build/
