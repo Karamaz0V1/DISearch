@@ -6,9 +6,11 @@ find_package(OpenCV REQUIRED)
 
 SET(SRC 
     main.cpp
+    DIIndex.cpp
     )
 
 SET(HDR
+    DIIndex.h
     )
 
 ADD_EXECUTABLE(${PROJECT_NAME} ${SRC} ${HDR})
