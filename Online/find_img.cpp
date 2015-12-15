@@ -76,7 +76,7 @@ std::string iimg_to_imgname(std::istream & file_img,int i_image)
 		  bool next = false ;
 		  while(!next)
 		  {
-				if(i < i_image)
+				if(i <= i_image)
 				{
 					std::getline(file_img,l);
 					i++;

@@ -10,10 +10,13 @@
 
 
 //Algorithme de vote
-//renvoit un vecteur contenant le nom des images (classées de la plus ressemblante a la moins)
+//renvoit un vecteur contenant le nom des images (classées de la plus ressemblante a la moins, celles qui n'ont eu aucun vote ne sont pas ajoutées)
  
 std::vector<std::string> vote(std::string file_desc,std::string file_img, std::vector<int> ind_desc, int nbImages)
 {
+	////////////////////////////////////////////
+	// CALCUL DES VOTES 
+	////////////////////////////////////////////
 
 	//nombre de descripteurs
 	int nbDesc = ind_desc.size();
@@ -28,19 +31,79 @@ std::vector<std::string> vote(std::string file_desc,std::string file_img, std::v
 	//on parcours tous les descripteurs retenus
 	for(int i_desc=0 ; i_desc< nbDesc;i_desc++)
 	{
-		std::cout << "le descripteur " << ind_desc[i_desc] << std::endl;
 		int i_image = idesc_to_iimg(str1,ind_desc[i_desc]);
-		std::cout << "vote l'image " << i_image << std::endl;
 		votes[i_image] ++ ;
-		
-		std::cout << "votes " << votes[0]<< votes[1]<< votes[2]<< votes[3]<< votes[4] << std::endl;
 	}
 
 
+	////////////////////////////////////////////
+	// Le vecteur de votes est complet /////////
+	////////////////////////////////////////////
+
+	////////////////////////////////////////////
+	// CLASSEMENT DES IMAGES
+	////////////////////////////////////////////
+
+	std::vector<std::string> classement ;
+	
+	int max = 0;
+	int i_max =0;
+	
+	//calcul de la norme
+	double norme = 0;
+	for(int i=0;i<votes.size();i++)
+	{
+		norme += votes[i]*votes[i];
+	}
+	norme = sqrt(norme);
+	
+	while(norme > 0)
+	{
+	
+		for(int i=0;i<votes.size();i++)
+		{
+			//parcours du vecteur pour trouver l'indice de valeur maximale
+			if(votes[i] > max)
+			{
+				i_max = i;
+				max = votes[i];
+			}
+		}
+	
+		if(max != 0)
+		{
+		std::string img_name = iimg_to_imgname(str2,i_max);
+		
+		classement.push_back(img_name);
+		votes[i_max] = 0;
+		i_max = 0;
+		max = 0;
+	
+	  norme = 0;
+		for(int i=0;i<votes.size();i++)
+		{
+			norme += votes[i]*votes[i];
+		}
+		norme = sqrt(norme);
 	
 	
-	std::vector<std::string> v(5);
-	return v;
+		}
+		else{break;}
+	
+	
+	}
+	
+	if(classement.size() == 0)
+	{std::cout << "pas d'image trouvée" << std::endl;}
+	else
+	{
+		std::cout << "classement " << std::endl ;
+		for(int i=0;i<classement.size();i++)
+		{std::cout << classement[i] << std::endl;}
+	}
+	
+
+	return classement;
 
 }
 
@@ -61,12 +124,17 @@ int main(int argc,char* argv[] )
 	std::string file_img = "/private/student/8/58/14009558/ESIR3/Vo/moteur_de_recherche/DISearch/Online/tmp/test_file_img.txt";
 	
 	
-	std::vector<int> ind_desc(5);
-	ind_desc[0]=1;
-	ind_desc[1]=4;
-	ind_desc[2]=6;
-	ind_desc[3]=8;
-	ind_desc[4]=5;
+	std::vector<int> ind_desc(10);
+	ind_desc[0]=0;
+	ind_desc[1]=1;
+	ind_desc[2]=2;
+	ind_desc[3]=3;
+	ind_desc[4]=4;
+	ind_desc[5]=5;
+	ind_desc[6]=6;
+	ind_desc[7]=7;
+	ind_desc[8]=8;
+	ind_desc[9]=9;
 	int nbImages = 10;
 	vote(file_desc,file_img,ind_desc,nbImages);
 }
