@@ -6,6 +6,8 @@ find_package(OpenCV REQUIRED)
 
 SET(SRC
 	lire_fichier.cpp
+	find_img.cpp
+	vote.cpp
 )
 
 SET(HDR

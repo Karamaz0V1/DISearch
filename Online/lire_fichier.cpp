@@ -64,13 +64,13 @@ cv::Mat readFileToMatrix(std::istream& filename, int nbDesc, int dim)
 		
     return m;
 }
-
+/*
 int main(int argc,char* argv[] )
 { 
 	std::ifstream str("/private/student/8/58/14009558/ESIR3/Vo/moteur_de_recherche/DISearch/Online/tmp/test_file.txt");
 	cv::Mat m = readFileToMatrix(str,8,4);
 	std::cout << "mat " << m << std::endl;
 }
-
+*/
 
 
