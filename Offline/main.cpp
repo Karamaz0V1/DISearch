@@ -18,6 +18,7 @@ int main( int argc, char* argv[] )
     // TODO: test nb args, disp usage
     di.loadDB(argv[1]);
     di.indexDB();
+    di.writeDB();
     cout << argv[1] << endl;
 
     cout << "Offline search" << endl;

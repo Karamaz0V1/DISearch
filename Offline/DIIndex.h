@@ -28,7 +28,7 @@ class DIIndex {
         std::vector<cv::Mat> _idb;                      // Picture DB
         std::vector<std::vector<cv::KeyPoint> > _kdb;   // Keypoints BD
         std::vector<cv::Mat> _ddb;                      // Descriptors DB
-        std::vector<std::string> _extFilter;             // File extension filter
+        std::vector<std::string> _extFilter;            // File extension filter
 };
 
 #endif /* __DIINDEX_H__ */

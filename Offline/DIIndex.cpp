@@ -29,6 +29,7 @@ void DIIndex::loadDB(const string & url) {
         for (vector<string>::const_iterator itf = _extFilter.begin(); itf != _extFilter.end(); itf++)
             if(isExt(*it, *itf)) {
                 cout << "load: " << url << '/' << *it << endl;
+                _pidb.push_back(*it);
                 _idb.push_back(imread(url + '/' + *it));
                 //imshow("LOAD DB", _idb.back());
                 //waitKey(0);
@@ -53,9 +54,21 @@ void DIIndex::indexDB(const string & detector, const string & extractor) {
 }
 
 void DIIndex::writeDB(const string & url) const {
-    ofstream idImages;
+    ofstream idImages, idDesc;
+    cout << "Write " << ID_IMAGE_FILE << "..." << endl;
     idImages.open((url + ID_IMAGE_FILE).c_str());
-
+    for (int i = 0; i < _pidb.size(); i++)
+        idImages << i << ';' << _pidb[i] << endl;
     idImages.close();
+
+    cout << "Write " << ID_DESC_FILE << "..." << endl;
+    idDesc.open((url + ID_DESC_FILE).c_str());
+    for (int i = 0; i < _idb.size(); i++) {
+        Mat tmp = _ddb[i];
+        for (int j = 0; j < tmp.rows; j++) 
+        idDesc << i << ';' << tmp.row(j) << endl;
+    }
+    idDesc.close();
+            
 
 }
