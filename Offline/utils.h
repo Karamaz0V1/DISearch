@@ -6,19 +6,16 @@
  *
  **************************************************************************/
 
-#include <iostream>
-#include "DIIndex.h"
+#ifndef __UTILS_H__
+#define __UTILS_H__
+#include <vector>
+#include <string>
 
-using namespace std;
-using namespace cv;
+std::vector<std::string> listDir(const std::string & url = "./");
+bool isExt(const std::string & url, const std::string & ext);
 
-int main( int argc, char* argv[] )
-{
-    DIIndex di;
-    di.loadDB("..");
 
-    cout << "Offline search" << endl;
-    return 0;
-}
+#endif /* __UTILS_H__ */
+
 
 

@@ -7,6 +7,7 @@
  **************************************************************************/
 
 #include "DIIndex.h"
+#include "utils.h"
 #include <iostream>
 #include <fstream>
 #include <dirent.h>
@@ -14,17 +15,17 @@
 using namespace std;
 using namespace cv;
 
+DIIndex::DIIndex() {}
 DIIndex::DIIndex(const std::vector<cv::Mat> & idb) : _idb(idb) {}
+DIIndex::~DIIndex() {}
 
 void DIIndex::loadDB(const string & url) {
-//    DIR * dir;
-//    struct dirent * ent;
-//    if ((dir = opendir(url.c_str()) != NULL) {
-//        while ((ent = readdir(dir)) != NULL) {
-//            cout << ent->d_name << endl;
-//        }
-//        closedir (dir);
-//    }
+    _extFilter = {"jpg", "pgm", "cpp"};
+    vector<string> dl = listDir(url);
+    for (vector<string>::const_iterator it = dl.begin(); it != dl.end(); it++)
+        for (vector<string>::const_iterator itf = _extFilter.begin(); itf != _extFilter.end(); itf++)
+            if(isExt(*it,*itf))
+                cout << *it << endl;
 }
 
 void DIIndex::indexDB(const string & detector, const string & extractor) {

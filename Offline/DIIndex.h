@@ -15,6 +15,7 @@
 
 class DIIndex {
     public:
+        DIIndex();
         DIIndex(const std::vector<cv::Mat> & idb);
         ~DIIndex();
         void push(const std::string & url, const cv::Mat);
@@ -23,10 +24,11 @@ class DIIndex {
         void writeDB(const std::string & url = "./") const;
 
     private:
-        std::vector<std::string> _pidb;
-        std::vector<cv::Mat> _idb;
-        std::vector<std::vector<cv::KeyPoint> > _kdb;
-        std::vector<cv::Mat> _ddb;
+        std::vector<std::string> _pidb;                 // Picture url DB
+        std::vector<cv::Mat> _idb;                      // Picture DB
+        std::vector<std::vector<cv::KeyPoint> > _kdb;   // Keypoints BD
+        std::vector<cv::Mat> _ddb;                      // Descriptors DB
+        std::vector<std::string> _extFilter;             // File extension filter
 };
 
 #endif /* __DIINDEX_H__ */
