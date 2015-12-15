@@ -7,11 +7,25 @@
  **************************************************************************/
 
 #include "DIIndex.h"
+#include <iostream>
+#include <fstream>
+#include <dirent.h>
 
 using namespace std;
 using namespace cv;
 
 DIIndex::DIIndex(const std::vector<cv::Mat> & idb) : _idb(idb) {}
+
+void DIIndex::loadDB(const string & url) {
+//    DIR * dir;
+//    struct dirent * ent;
+//    if ((dir = opendir(url.c_str()) != NULL) {
+//        while ((ent = readdir(dir)) != NULL) {
+//            cout << ent->d_name << endl;
+//        }
+//        closedir (dir);
+//    }
+}
 
 void DIIndex::indexDB(const string & detector, const string & extractor) {
     FeatureDetector * fd = FeatureDetector::create(detector);
@@ -25,3 +39,10 @@ void DIIndex::indexDB(const string & detector, const string & extractor) {
     delete fd, de;
 }
 
+void DIIndex::writeDB(const string & url) const {
+    ofstream idImages;
+    idImages.open((url + ID_IMAGE_FILE).c_str());
+
+    idImages.close();
+
+}
