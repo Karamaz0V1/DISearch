@@ -11,6 +11,7 @@
 #include <iostream>
 #include <fstream>
 #include <dirent.h>
+#include <opencv2/nonfree/features2d.hpp>
 
 using namespace std;
 using namespace cv;
@@ -36,13 +37,15 @@ void DIIndex::loadDB(const string & url) {
 }
 
 void DIIndex::indexDB(const string & detector, const string & extractor) {
-    FeatureDetector * fd = FeatureDetector::create(detector);
+    //FeatureDetector * fd = FeatureDetector::create(detector);
+    FeatureDetector * fd = new SiftFeatureDetector();
     cout << "Extract " << detector << " keypoints from images..." << endl;
     fd->detect(_idb, _kdb); // plz opencv :'(
     //for (vector<Mat>::const_iterator it = _idb.begin(); it != _idb.end(); it++) {
     //    fd->detect(*it, 
 
-    DescriptorExtractor * de = DescriptorExtractor::create(extractor);
+    //DescriptorExtractor * de = DescriptorExtractor::create(extractor);
+    DescriptorExtractor * de = new SiftDescriptorExtractor();
     cout << "Create " << extractor << " descriptors..." << endl;
     de->compute(_idb, _kdb, _ddb);
 

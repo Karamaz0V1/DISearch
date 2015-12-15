@@ -17,7 +17,7 @@ int main( int argc, char* argv[] )
     DIIndex di;
     // TODO: test nb args, disp usage
     di.loadDB(argv[1]);
-    di.indexDB("FAST", "BRIEF");
+    di.indexDB();
     cout << argv[1] << endl;
 
     cout << "Offline search" << endl;
