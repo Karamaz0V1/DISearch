@@ -5,3 +5,7 @@
 *~
 /Online/tmp/
 /Online/build/
+*.aux
+*.log
+*.pdf
+*.toc

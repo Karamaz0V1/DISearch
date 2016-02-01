@@ -1,0 +1,44 @@
+\documentclass{article}
+%\usepackage{fullpage}
+\usepackage{fancyhdr}
+\usepackage[english,francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{subfig}
+
+%\renewcommand{\baselinestretch}{2}
+\author{Brieuc \textsc{Daniel}, Océane \textsc{Lasserre}, Danchi \textsc{Li}, \\ Florent \textsc{Guiotte}, Frédéric \textsc{Becker}}
+\title{Moteur de recherche d'images \\ \Large{Compte rendu de résultats}}
+\pagestyle{fancy}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+Le but de ce projet est de développer un moteur de recherche dans une base de données. 
+
+Les images sont indexées via des descripteurs (SURF et SIFT) et choisies par algorithme de vote.
+
+\section{Tests et résultats}
+\subsection{Tests avec différents descripteurs}
+Sur une même base de données, nous avons testé l'algorithme avec deux descripteurs différents.
+
+\subsection{Tests sur différentes bases de données}
+Avec le même descripteur, nous avons testé l'algorithme sur plusieurs bases de données.
+
+\section{Conclusion}
+Sur nos données de test, le descripteur le plus efficace est SIFT. 
+
+\end{document}
+
+%\begin{figure}[!ht]%htp]
+%  \centering
+%  \subfloat[Masques]{\label{mask:origine}\includegraphics[width=0.7\textwidth]{img/mer_app_mask.png}}
+%  \hspace{0.030\textwidth}
+%  \subfloat[Seam carving avec masque]{\label{mask:sc}\includegraphics[width=1.0\textwidth]{img/mer_mask_reduced.png}}
+%  \caption{Application des masques et résultat final}
+%  \label{mer:init}
+%\end{figure}
+
