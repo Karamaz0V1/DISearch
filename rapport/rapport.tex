@@ -17,18 +17,43 @@
 \tableofcontents
 
 \section{Introduction}
+
 Le but de ce projet est de développer un moteur de recherche dans une base de données. 
+
+Le projet se divise en deux parties, une <<Offline>> qui extrait et indexe des descripteurs sur une base de données
+d'images donnée. Une autre dite <<Online>> extrait ce même type de descripteur sur une image requête, et cherche des
+correspondances avec la base des descripteurs générée en <<Offline>>. La correspondance se fait à l'aide d'un 
+algorithme de vote. Les meilleurs résultats sont alors affichés selon leur pertinence. 
 
 Les images sont indexées via des descripteurs (SURF et SIFT) et choisies par algorithme de vote.
 
 \section{Tests et résultats}
 \subsection{Tests avec différents descripteurs}
+
 Sur une même base de données, nous avons testé l'algorithme avec deux descripteurs différents.
+\begin{figure}[!ht]%htp]
+  \centering
+  \subfloat[SIFT]{\label{desc:sift}\includegraphics[width=0.45\textwidth]{img/sift.png}}
+  \hspace{0.04\textwidth}
+  \subfloat[SURF]{\label{desc:surf}\includegraphics[width=0.45\textwidth]{img/surf.png}}
+  \caption{Résultats avec différents descripteurs}
+  \label{desc}
+\end{figure}
 
 \subsection{Tests sur différentes bases de données}
-Avec le même descripteur, nous avons testé l'algorithme sur plusieurs bases de données.
+
+Avec le même descripteur (SIFT), nous avons testé l'algorithme sur plusieurs bases de données.
+\begin{figure}[!ht]%htp]
+  \centering
+  \subfloat[COREL]{\label{db:corel}\includegraphics[width=0.45\textwidth]{img/corel.png}}
+  \hspace{0.04\textwidth}
+  \subfloat[NISTER]{\label{db:nister}\includegraphics[width=0.45\textwidth]{img/nister.png}}
+  \caption{Résultats avec différentes bases de données}
+  \label{desc}
+\end{figure}
 
 \section{Conclusion}
+
 Sur nos données de test, le descripteur le plus efficace est SIFT. 
 
 \end{document}
