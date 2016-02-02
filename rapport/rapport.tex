@@ -78,10 +78,19 @@ le nombre de <<faux positifs>>. Selon le type de recherche, cela peut être, ou 
 
 \subsection{Tests sur différentes bases de données}
 
-Avec le même descripteur, nous avons testé l'algorithme sur plusieurs bases de données. La pertinence des résultats ne varie pas.
+Avec le même descripteur, nous avons testé l'algorithme sur la base de donnée {\em NISTER}. Cette base
+d'image propose des échantillons de transformation\footnote{Rotations, translations, bruitage\ldots} sur quelques images.
+Les résultats sont visibles figure \ref{db}. Les résultats semblent plus pertinents sur cette base de données,
+surtout avec les descripteurs SIFT (cf. figure \ref{db:sift}).
 
-IMAGES
-
+\begin{figure}[!ht]%htp]
+  \centering
+  \subfloat[SIFT]{\label{db:sift}\includegraphics[width=0.45\textwidth]{img/sift_knn=25_linear.JPG}
+  \hspace{0.04\textwidth}
+  \subfloat[SURF]{\label{db:surf}\includegraphics[width=0.45\textwidth]{img/SURF_knn=25_linear.JPG}}
+  \caption{Résultats de l'algorithme avec la base de données NISTER}
+  \label{db}
+\end{figure}
 
 \section{Conclusion}
 
