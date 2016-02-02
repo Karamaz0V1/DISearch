@@ -47,7 +47,7 @@ La fonction SURF donne les résultats de la figure \ref{surf}.
   \label{surf}
 \end{figure}
 
-L'image en haut à gauche de la figure \ref{surf:knn} correspond à l'image requête retrouvée. Les images suivantes sont
+L'image en haut à gauche de chaque figure correspond à l'image requête retrouvée. Les images suivantes sont
 classées de la plus pertinente à la plus eloignée (de gauche à droite).
 On observe que les résultats sont éloignés de l'image requête. 
 
@@ -57,7 +57,7 @@ Le type de recherche (knn ou sphérique) a une influence importante sur les rés
 
 \subsubsection{SIFT}
 
-La fonction SIFT donne les résultats de la figure \ref{sift} (sur les mêmes images requêtes que précédement).
+La fonction SIFT donne les résultats de la figure \ref{sift} (sur les mêmes images requêtes que précédemment).
 
 \begin{figure}[!ht]%htp]
   \centering
@@ -68,9 +68,10 @@ La fonction SIFT donne les résultats de la figure \ref{sift} (sur les mêmes im
   \label{sift}
 \end{figure}
 
-En haut à gauche de la figure \ref{sift:knn}, l'image requête retrouvée, en suivant, les images obtenues, classées de la plus pertinente à la plus eloignée de gauche à droite.
+L'image en haut à gauche de chaque figure correspond à l'image requête retrouvée. Les images suivantes sont
+classées de la plus pertinente à la plus eloignée (de gauche à droite).
 
-La pertinence des résultats ici est la même que pour les descripteurs SURF. En revanche, dans ce cas précis vient du fait que pour une recherche sphérique,
+La pertinence des résultats ici est la même que pour les descripteurs SURF. En revanche dans ce cas précis, cela vient du fait que pour une recherche sphérique,
 seule l'image requête est trouvée. Les autres sont trop éloignées pour être conservées. Le nombre de <<vrais
 positifs>> n'est pas amélioré mais cela diminue 
 le nombre de <<faux positifs>>. Selon le type de recherche, cela peut être, ou non, un avantage.
