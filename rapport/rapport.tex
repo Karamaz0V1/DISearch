@@ -25,7 +25,9 @@ d'images. Une autre dite <<Online>> extrait ce même type de descripteur sur une
 correspondances avec la base des descripteurs générée en <<Offline>>. La correspondance se fait à l'aide d'un 
 algorithme de vote. Les meilleurs résultats sont alors affichés selon leur pertinence. 
 
-Les images sont indexées via des descripteurs (SURF et SIFT) et choisies par algorithme de vote.
+Pour ce projet nous utiliserons deux types de descripteurs distincts.
+Le descripteur {\em Speeded Up Robust
+Features (SURF)} et le descripteur {\em Scale-invariant feature transform (SIFT)}.
 
 \section{Tests et résultats}
 \subsection{Tests avec différents descripteurs}
@@ -34,40 +36,44 @@ Sur une même base de données, nous avons testé l'algorithme avec deux descrip
 
 \subsubsection{SURF}
 
-La fonction SURF donne les résultats suivants:
+La fonction SURF donne les résultats de la figure \ref{surf}.
 
 \begin{figure}[!ht]%htp]
   \centering
-  \subfloat[SURF - knn]{\label{desc:surf-knn}\includegraphics[width=0.45\textwidth]{img/KMeansIndex/knn/corel_0000000303_512_COREL_SURF.jpg}}
+  \subfloat[SURF - knn]{\label{surf:knn}\includegraphics[width=0.45\textwidth]{img/KMeansIndex/knn/corel_0000000303_512_COREL_SURF.jpg}}
   \hspace{0.04\textwidth}
-  \subfloat[SURF - Spheric]{\label{desc:surf-spheric}\includegraphics[width=0.45\textwidth]{img/KMeansIndex/radius/corel_0000000303_512_COREL_SURF.jpg}}
+  \subfloat[SURF - Spheric]{\label{surf:spheric}\includegraphics[width=0.45\textwidth]{img/KMeansIndex/radius/corel_0000000303_512_COREL_SURF.jpg}}
   \caption{Résultats avec SURF via une recherche knn et sphérique.}
-  \label{desc}
+  \label{surf}
 \end{figure}
 
-En haut à gauche l'image requête retrouvée, en suivant, les images obtenues, classées de la plus pertinente à la plus eloignée de gauche à droite.
+L'image en haut à gauche de la figure \ref{surf:knn} correspond à l'image requête retrouvée. Les images suivantes sont
+classées de la plus pertinente à la plus eloignée (de gauche à droite).
 On observe que les résultats sont éloignés de l'image requête. 
 
-L'image requête est bien retrouvée mais les autres images obtenues ne sont pas pertinentes et les images les plus proches 'instinctivement' ne sont pas retrouvées. Le type de recherche (knn ou sphérique) a une influence importante sur les résultats mais ne semble pas les rapprocher de l'image requête. 
+L'image requête est bien retrouvée mais les autres images obtenues ne sont pas pertinentes et les images les
+plus proches <<instinctivement>> ne sont pas retrouvées. 
+Le type de recherche (knn ou sphérique) a une influence importante sur les résultats mais ne semble pas les rapprocher de l'image requête. 
 
 \subsubsection{SIFT}
 
-La fonction SIFT donne les résultats suivants (sur les mêmes images requêtes que précédement):
-
+La fonction SIFT donne les résultats de la figure \ref{sift} (sur les mêmes images requêtes que précédement).
 
 \begin{figure}[!ht]%htp]
   \centering
-  \subfloat[SIFT - knn]{\label{desc:sift}\includegraphics[width=0.45\textwidth]{img/KMeansIndex/knn/corel_0000000303_512_COREL_SIFT.jpg}}
+  \subfloat[SIFT - knn]{\label{sift:knn}\includegraphics[width=0.45\textwidth]{img/KMeansIndex/knn/corel_0000000303_512_COREL_SIFT.jpg}}
   \hspace{0.04\textwidth}
-  \subfloat[SIFT - Spheric]{\label{desc:sift}\includegraphics[width=0.45\textwidth]{img/KMeansIndex/radius/corel_0000000303_512_COREL_SIFT.jpg}}
+  \subfloat[SIFT - Spheric]{\label{sift:spheric}\includegraphics[width=0.45\textwidth]{img/KMeansIndex/radius/corel_0000000303_512_COREL_SIFT.jpg}}
   \caption{Résultats avec SIFT via une recherche en knn et sphérique.}
-  \label{desc}
+  \label{sift}
 \end{figure}
 
-En haut à gauche l'image requête retrouvée, en suivant, les images obtenues, classées de la plus pertinente à la plus eloignée de gauche à droite.
+En haut à gauche de la figure \ref{sift:knn}, l'image requête retrouvée, en suivant, les images obtenues, classées de la plus pertinente à la plus eloignée de gauche à droite.
 
-La pertinence des résultats ici est la même que pour les descripteurs SURF. En revanche, dans ce cas précis vient du fait que pour une recherche sphérique, seule l'image requête est trouvée. Les autres sont trop éloignées pour être conservées. Le nombre de 'vrais positifs' n'est pas amélioré mais cela diminue le nombre de 'faux positifs'. Selon le type de recherche, cela peut être, ou non, un avantage.
-
+La pertinence des résultats ici est la même que pour les descripteurs SURF. En revanche, dans ce cas précis vient du fait que pour une recherche sphérique,
+seule l'image requête est trouvée. Les autres sont trop éloignées pour être conservées. Le nombre de <<vrais
+positifs>> n'est pas amélioré mais cela diminue 
+le nombre de <<faux positifs>>. Selon le type de recherche, cela peut être, ou non, un avantage.
 
 
 \subsection{Tests sur différentes bases de données}
@@ -79,7 +85,8 @@ IMAGES
 
 \section{Conclusion}
 
-Notre algorithme permet dans tous les cas testés de retrouver l'image requête. Néanmoins, une très légere variation dans l'image peut influencer sa position dans les résultats de façon très importante. 
+Notre algorithme permet dans tous les cas testés de retrouver l'image requête. Néanmoins, une très légere variation dans l'image peut influencer 
+sa position dans les résultats de façon très importante. 
 De plus, selon le cas et le type de résulats souhaités (précis ou larges), on peut adapter le choix du descripteur.
 Pour améliorer nos résultats, il faudrait ajouter des traitements en plus sur les images, par exemple de type comparaison d'histogrammes, pour affiner la recherche.
 \end{document}
