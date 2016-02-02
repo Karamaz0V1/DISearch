@@ -76,6 +76,25 @@ seule l'image requête est trouvée. Les autres sont trop éloignées pour être
 positifs>> n'est pas amélioré mais cela diminue 
 le nombre de <<faux positifs>>. Selon le type de recherche, cela peut être, ou non, un avantage.
 
+\subsection{Tests sur différentes méthodes d'indexation}
+
+Nous avons comparé trois méthodes d'indexation différentes~:
+
+\begin{itemize}
+    \item {\em Linéaire}, on effectue une recherche linéaire de l'index, en mode {\em brute-force}
+    \item {\em KDTree}, on effectue la recherche en parallèle dans l'index organisé en plusieurs ensemble aléatoires de kd-trees
+    \item {\em KMeans}, l'index construit est organisé en arbre k-means hiérarchique
+\end{itemize}
+
+Nous avons évalués ces méthodes en s'aidant de deux facteurs, la rapidité et la précision.
+Sur ces points, l'index linéaire est plus rapide que le KDTree qui lui même est plus rapide que le KMean.
+Tandis que pour la précision, le meilleur est le KMean, suivis par le KDTree, puis l'index linéaire.
+Pour conclure, les indexes sont proportionellement précis par rapport à leur lenteur.
+
+
+% speed: linearIndex > KDTreeIndex > KmeansIndex
+% accuracy: linearIndex < KDTreeIndex < KmeansIndex
+% sift flann match distance is very big
 
 \subsection{Tests sur différentes bases de données}
 
