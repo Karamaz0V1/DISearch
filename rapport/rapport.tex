@@ -1,10 +1,11 @@
-\documentclass{article}
+\documentclass[a4paper]{article}
 %\usepackage{fullpage}
 \usepackage{fancyhdr}
 \usepackage[english,francais]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[pdftex]{graphicx}
+\usepackage[a4paper]{geometry}
 \usepackage{subfig}
 
 %\renewcommand{\baselinestretch}{2}
@@ -71,9 +72,10 @@ La fonction SIFT donne les résultats de la figure \ref{sift} (sur les mêmes im
 L'image en haut à gauche de chaque figure correspond à l'image requête retrouvée. Les images suivantes sont
 classées de la plus pertinente à la plus eloignée (de gauche à droite).
 
-La pertinence des résultats ici est la même que pour les descripteurs SURF. En revanche dans ce cas précis, cela vient du fait que pour une recherche sphérique,
-seule l'image requête est trouvée. Les autres sont trop éloignées pour être conservées. Le nombre de <<vrais
-positifs>> n'est pas amélioré mais cela diminue 
+La pertinence des résultats ici est la même que pour les descripteurs SURF. En revanche pour une recherche sphérique, 
+si les images sont trop éloignées pour être conservées alors seule l'image requête est trouvée (comme dans
+notre cas, figure \ref{sift:spheric}).
+Le nombre de <<vrais positifs>> n'est pas amélioré mais cela diminue 
 le nombre de <<faux positifs>>. Selon le type de recherche, cela peut être, ou non, un avantage.
 
 \subsection{Tests sur différentes méthodes d'indexation}
